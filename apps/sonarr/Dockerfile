@@ -46,8 +46,8 @@ RUN \
   && chown -R kah:kah /app \
   && chmod -R u=rwX,go=rX /app \
   && printf "umask %d" "${UMASK}" >> /etc/bash.bashrc \
-  && update-ca-certificates
-
+  && update-ca-certificates \
+  && mozroots --machine --import --sync --quiet
 USER kah
 
 EXPOSE 8989
